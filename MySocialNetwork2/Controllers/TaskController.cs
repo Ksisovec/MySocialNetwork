@@ -90,10 +90,15 @@ namespace MySocialNetwork2.Controllers
             //    string[] tagsStr = model.Tags.Split('#');
             //    foreach (string tag1 in tagsStr)
             //    {
-            //        //if(tag1 != tagRepository.FindByID())
+            //        if (tag1 != tagRepository.FindByID(tag1).ToString())
+            //        {
+            //            Tag tag = new Tag();
+            //            tag.ID = tag1;
+
+            //        }
             //        //Tag tag = new Tag();
             //        //tag.TagId = tag1;
-                    
+
             //    }
             //}
 

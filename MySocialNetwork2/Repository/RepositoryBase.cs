@@ -55,9 +55,6 @@ namespace MySocialNetwork2.Repository
         public virtual void Insert(T entity)
         {
             dbSet.Add(entity);
-            //context.Entry(entity).State = EntityState.Modified;
-            
-            //context.Tasks.Add(entity.);
             context.SaveChanges();
 
         }
