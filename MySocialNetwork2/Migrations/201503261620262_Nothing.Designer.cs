@@ -7,13 +7,13 @@ namespace MySocialNetwork2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class ChangeTags : IMigrationMetadata
+    public sealed partial class Nothing : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeTags));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Nothing));
         
         string IMigrationMetadata.Id
         {
-            get { return "201503191559549_ChangeTags"; }
+            get { return "201503261620262_Nothing"; }
         }
         
         string IMigrationMetadata.Source

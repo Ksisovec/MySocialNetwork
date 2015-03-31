@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
@@ -18,7 +19,7 @@ namespace MySocialNetwork2.Repository
             this.dbSet = context.Set<T>();
         }
 
-        public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null,
+        public virtual IEnumerable<T> Get(Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "")
         {
@@ -44,7 +45,10 @@ namespace MySocialNetwork2.Repository
                 return query.ToList();
             }
         }
-
+        public T Get(Expression<Func<T, bool>> where)
+        {
+            return dbSet.Where(where).FirstOrDefault<T>();
+        }
 
         public virtual T FindByID(object entityId)
         {
@@ -55,7 +59,10 @@ namespace MySocialNetwork2.Repository
         public virtual void Insert(T entity)
         {
             dbSet.Add(entity);
-            context.SaveChanges();
+            //context.Entry(entity).State = EntityState.Modified;
+            
+            //context.Tasks.Add(entity.);
+            Save();
 
         }
         public virtual void Add(T entity)
@@ -67,7 +74,7 @@ namespace MySocialNetwork2.Repository
         {
             dbSet.Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
-            context.SaveChanges();
+            Save();
         }
         public virtual void Delete(object id)
         {
@@ -81,6 +88,34 @@ namespace MySocialNetwork2.Repository
                 dbSet.Attach(entity);
             }
             dbSet.Remove(entity);
+        }
+        public void Save()
+        {
+            try
+            {
+                context.SaveChanges();
+            }
+#if DEBUG
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+#endif
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+
         }
     }
 }

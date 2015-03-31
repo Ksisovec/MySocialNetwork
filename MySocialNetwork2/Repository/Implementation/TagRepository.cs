@@ -13,5 +13,12 @@ namespace MySocialNetwork2.Repository.Implementation
             : base(dbContext)
         {
         }
+
+        //public string FindByContent(string tagName)
+        //{
+
+        //    return context.Set<string>().ToString();
+        //}
+
     }
 }

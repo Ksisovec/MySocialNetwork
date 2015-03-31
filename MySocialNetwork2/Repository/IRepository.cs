@@ -21,5 +21,8 @@ namespace MySocialNetwork2.Repository
         IEnumerable<T> Get(Expression<Func<T, bool>> filter = null,
          Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
          string includeProperties = "");
+
+        T Get(Expression<Func<T, bool>> where);
+        void Save();
     }
 }

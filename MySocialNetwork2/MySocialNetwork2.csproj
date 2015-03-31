@@ -182,9 +182,13 @@
     <Compile Include="Migrations\201408201712429_Update-Database.Designer.cs">
       <DependentUpon>201408201712429_Update-Database.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503191559549_ChangeTags.cs" />
-    <Compile Include="Migrations\201503191559549_ChangeTags.Designer.cs">
-      <DependentUpon>201503191559549_ChangeTags.cs</DependentUpon>
+    <Compile Include="Migrations\201503261620262_Nothing.cs" />
+    <Compile Include="Migrations\201503261620262_Nothing.Designer.cs">
+      <DependentUpon>201503261620262_Nothing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503311654108_ChangeDisplayName.cs" />
+    <Compile Include="Migrations\201503311654108_ChangeDisplayName.Designer.cs">
+      <DependentUpon>201503311654108_ChangeDisplayName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -295,8 +299,11 @@
       <DependentUpon>201408201712429_Update-Database.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503191559549_ChangeTags.resx">
-      <DependentUpon>201503191559549_ChangeTags.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503261620262_Nothing.resx">
+      <DependentUpon>201503261620262_Nothing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503311654108_ChangeDisplayName.resx">
+      <DependentUpon>201503311654108_ChangeDisplayName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

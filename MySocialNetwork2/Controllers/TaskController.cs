@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using Microsoft.AspNet.Identity.Owin;
 using MySocialNetwork2.Models;
 using MySocialNetwork2.Repository.Interfaces;
@@ -17,6 +18,7 @@ namespace MySocialNetwork2.Controllers
         private readonly ICategoryRepository categoryRepositoryitory;
         private readonly IAnswersRepository answersRepository;
         private readonly ITagRepository tagRepository;
+        private readonly ICommentRepository commentRepository;
         private ApplicationUserManager userManager;
 
 
@@ -25,13 +27,15 @@ namespace MySocialNetwork2.Controllers
 
         }
 
-        public TaskController(ITaskRepository repository, 
+        public TaskController(ITaskRepository taskrepository, 
             ICategoryRepository categoryRepositoryitory,
-            IAnswersRepository answersRepository)
+            IAnswersRepository answersRepository,
+            ITagRepository tagRepository)
         {
-            this.taskRepository = repository;
+            this.taskRepository = taskrepository;
             this.categoryRepositoryitory = categoryRepositoryitory;
             this.answersRepository = answersRepository;
+            this.tagRepository = tagRepository;
         }
 
 
@@ -80,27 +84,45 @@ namespace MySocialNetwork2.Controllers
                     answer.TaskID = taskmodel.ID;
                     answersRepository.Insert(answer);
                     answers.Add(answer);
+                    //taskmodel.Answers.Add(answer);
                     
                 }
                 taskmodel.Answers = answers;
             }
-            //if (model.Answers != null)
-            //{
-            //    ICollection<Tag> tags = new Collection<Tag>();
-            //    string[] tagsStr = model.Tags.Split('#');
-            //    foreach (string tag1 in tagsStr)
-            //    {
-            //        if (tag1 != tagRepository.FindByID(tag1).ToString())
-            //        {
-            //            Tag tag = new Tag();
-            //            tag.ID = tag1;
+            if (model.Answers != null)
+            {
+                ICollection<Tag> tags = new Collection<Tag>();
+                
+                string[] tagsNames = model.Tag.Trim('#').Split('#');
+                
+                foreach (string tagName in tagsNames)
+                {
+                    Tag tag = new Tag();
 
-            //        }
-            //        //Tag tag = new Tag();
-            //        //tag.TagId = tag1;
+                    //tag = tagRepository.Get(x => x.ContentOfTag == tagName);
+                    //tag = tagRepository.FindByID(1);
+                    var i = tagRepository.Get(x => x.ContentOfTag == tagName);
+                    if (tagRepository.Get(x => x.ContentOfTag == tagName) != null)
+                    {
+                        tag = tagRepository.Get(x => x.ContentOfTag == tagName);
+                        tag.RatingOfTag++;
+                        tag.Task.Add(taskmodel);
+                        tagRepository.Update(tag);
+                    }
+                    else
+                    {
+                        tag.ContentOfTag = tagName;
+                        tag.RatingOfTag = 1;  
+                        tag.Task = new Collection<Task>();
+                        tag.Task.Add(taskmodel);
+                        tagRepository.Insert(tag);
+                    }
 
-            //    }
-            //}
+                    
+                    tags.Add(tag);
+                }
+                taskmodel.Tag = tags;
+            }
 
 
 

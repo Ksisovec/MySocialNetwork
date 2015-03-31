@@ -18,7 +18,7 @@ namespace MySocialNetwork2.ViewModels
         public string Content { get; set; }
         //public IEnumerable<string> Tags { get; set; }
         public string Answers { get; set; }
-        public string Tags { get; set; }
+        public string Tag { get; set; }
 
 
 

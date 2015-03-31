@@ -36,9 +36,23 @@ namespace MySocialNetwork2.Models
         public DbSet<ReferenceToTask> ReferenceToTasks { get; set; }
         public DbSet<SolvedTask> SolvedTasks { get; set; }
         public DbSet<Tag> Tag { get; set; }
-        public ApplicationDbContext()
+        public ApplicationDbContext() 
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Task>()
+                .HasMany(t => t.Tag)
+                .WithMany(t => t.Task)
+                .Map(m =>
+                {
+                    m.ToTable("TaskTag");
+                    m.MapLeftKey("TaskID");
+                    m.MapRightKey("TagID");
+                });
+            base.OnModelCreating(modelBuilder);
         }
 
         public static ApplicationDbContext Create()

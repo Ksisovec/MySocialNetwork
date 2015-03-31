@@ -21,7 +21,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input id="Name" class="form-control text-box single-line" type="text" value="Enter name" name="Name" data-val-required="The Name field is required." data-val="true" style="color: gray;">
+                <input id="Name" class="form-control text-box single-line" type="text" name="Name" data-val-required="The Name field is required." data-val="true" style="color: gray;">
                 <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="Name"></span>
             </div>
         </div>
@@ -29,11 +29,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input id="Content" class="form-control text-box single-line" type="text" value="Enter content" name="Content" data-val-required="The Content field is required." data-val="true" style="color: gray;">
+                <input id="Content" class="form-control text-box single-line" type="text" name="Content" data-val-required="The Content field is required." data-val="true" style="color: gray;">
                 <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="Content"></span>
             </div>
         </div>
-
+        <br/>
         <div class="form-group">
             @Html.LabelFor(model => model.SelectCategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -47,12 +47,15 @@
         
         
         
-        
-        
-        <textarea name="Answers" cols="100" rows="6" wrap="off">qweqw
+        <br />
+        <textarea name="Answers" cols="100" rows="6">qweqw
 rrr
 123</textarea>
-
+        <br />
+        <br />
+        <br />
+        <input name="Tag" class="form-control text-box single-line" type="text" data-val-required="The Content field is required." data-val="true">
+        <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="Content"></span>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" formmethod="post" class="btn btn-default">

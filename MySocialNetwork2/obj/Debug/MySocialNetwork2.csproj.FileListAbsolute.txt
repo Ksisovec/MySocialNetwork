@@ -126,4 +126,5 @@ e:\работы\itra\MySocialNetwork\MySocialNetwork2\obj\Debug\MySocialNetwork2
 e:\работы\itra\MySocialNetwork\MySocialNetwork2\obj\Debug\MySocialNetwork2.csproj.GenerateResource.Cache
 e:\работы\itra\MySocialNetwork\MySocialNetwork2\obj\Debug\MySocialNetwork2.dll
 e:\работы\itra\MySocialNetwork\MySocialNetwork2\obj\Debug\MySocialNetwork2.pdb
-E:\работы\itra\MySocialNetwork\MySocialNetwork2\obj\Debug\MySocialNetwork2.Migrations.ChangeTags.resources
+E:\работы\itra\MySocialNetwork\MySocialNetwork2\obj\Debug\MySocialNetwork2.Migrations.Nothing.resources
+E:\работы\itra\MySocialNetwork\MySocialNetwork2\obj\Debug\MySocialNetwork2.Migrations.ChangeDisplayName.resources
